@@ -1,6 +1,5 @@
 package org.fundacionjala;
 
-import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,12 +10,13 @@ public class Main {
 
   public static void main(String[] args) {
     FileHandler file;
+    log.setUseParentHandlers(false);
     log.setLevel(Level.FINER);
-    log.fine("Begin my app.");
-    log.entering(Main.class.getName(), "Do it.");
+    log.fine("Begin my app. --");
+    log.entering(Main.class.getName(), "Do it. --");
     System.out.println("Hello Logger");
     try {
-      file = new FileHandler("C:/temp/my-log-file.log");
+      file = new FileHandler("C:/temp/my-log-file.log", true);
       log.addHandler(file);
       SimpleFormatter formatter = new SimpleFormatter();
       file.setFormatter(formatter);
